@@ -1,0 +1,82 @@
+if game.PlaceId == 8540346411 then
+	local PetersHub = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+	local Window = PetersHub:MakeWindow({Name = "Peters Hub - [🍀X6!] Rebirth Champions X", HidePremium = false, IntroEnabled = true , IntroText = "Welcome to Peters Hub",  SaveConfig = false, ConfigFolder = "PetersHubConfig"})
+	
+	--Values
+	_G.autoTap = true
+	_G.autoRebirth = true
+	_G.autoEquip = true
+    _G.Disable = true
+    _G.jump = true
+
+    
+	--Fuctions
+	
+    function speed()
+        while _G.speed == true do
+             game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
+            wait(.000001)
+         end
+        end
+
+	function autoTap()
+		while _G.autoTap == true do
+			game:GetService("ReplicatedStorage").Events.Click3:FireServer()
+			wait(.000001)
+		 end
+		end
+
+	function autoRebirth()
+		while _G.autoRebirth == true do
+			game:GetService("ReplicatedStorage").Events.Rebirth:FireServer(1)
+			wait(1)
+		 end
+		end
+	-- Tabs
+	
+	local FarmTab = Window:MakeTab({
+		Name = "AutoFarm",
+		Icon = "rbxassetid://4483345998",
+		PremiumOnly = false
+	})
+
+	
+	local MiscTab = Window:MakeTab({
+		Name = "Misc",
+		Icon = "rbxassetid://4483345998",
+		PremiumOnly = false
+	})
+	
+	--Toggles
+	
+	FarmTab:AddToggle({
+		Name = "Enable Auto Farm!",
+		Default = false,
+		Callback = function(Value)
+			_G.autoTap = Value
+			autoTap()
+		end    
+	})
+
+    MiscTab:AddToggle({
+		Name = "Enable Speed!",
+		Default = false,
+		Callback = function(Value)
+			_G.speed = Value
+			speed()
+		end    
+	})
+	
+	FarmTab:AddToggle({
+		Name = "Enable Auto Rebirth!",
+		Default = false,
+		Callback = function(Value)
+			_G.autoRebirth = Value
+			autoRebirth()
+		end    
+	})
+
+	-- Dropodowns
+	
+	end
+	PetersHub:Init()
